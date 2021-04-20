@@ -1,0 +1,16 @@
+{
+  "name": "lambda-code-tester",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "json5": "^2.2.0",
+    "moment": "^2.29.1",
+    "serverless-jest-plugin": "^0.3.0"
+  },
+  "version": "1.0.0",
+  "description": "Helper to test lambda",
+  "license": "MIT",
+  "author": {
+    "name": "Spark",
+    "email": "innocentchris@gmail.com"
+  }
+}
