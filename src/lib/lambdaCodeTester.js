@@ -1,4 +1,5 @@
 'use strict';
+var appRoot = require('app-root-path');
 const fs = require('fs')
 const jestPlugin = require('serverless-jest-plugin');
 const moment = require('moment');
@@ -257,11 +258,11 @@ function test(useGraphql = false) {
         if (item.skip) {
             return;
         }
-        let apexMode = require("./../src/lambda/" + item.uri);
+        let apexMode = require(appRoot + "/src/lambda/" + item.uri);
         let apiSpec = apexMode.apiSpec;
 
         if (useGraphql && apiSpec.graphql) {
-            const mod = require("./../src/lambda/graphql");
+            const mod = require(appRoot + "/src/lambda/graphql");
             const lambdaWrapper = jestPlugin.lambdaWrapper;
             const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' });
             const apiPath = item.uri
@@ -331,7 +332,7 @@ function test(useGraphql = false) {
 
         }
         else {
-            const mod = require("./../src/lambda/" + item.uri);
+            const mod = require(appRoot + "/src/lambda/" + item.uri);
             const lambdaWrapper = jestPlugin.lambdaWrapper;
             const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' });
             it(item.uri + ((item.description) ? " " + item.description : ""), async () => {
